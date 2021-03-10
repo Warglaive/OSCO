@@ -1,76 +1,105 @@
-//part of source file LL.c
 #include "LL.h"
-#include "stdio.h"
-#include "stdbool.h"
-void addFrontLL(LL* list, int number) {
-	node* newNode;
-	newNode = malloc(sizeof(node));
+#include<stdio.h>
+#include<stdlib.h>
 
-	newNode->value = number;
-	newNode->next = list->head;
-	list->head = newNode;
-}
 void constructLL(LL* list) {
-	node* n;
-	n = malloc(sizeof(node));
-	n->next = NULL;
+	Node* n;
+	n = malloc(sizeof(Node));
 	list->head = n;
 	list->tail = n;
+	list->head->next = list->tail;
+	list->size = 0;
 }
-void destructLL(LL* list) {
-	free(list);
-}
-void printLL(LL* list) {
-	//print head
-	node* currentHeadNode = list->head;
-	while (currentHeadNode->next != NULL)
-	{
-		printf("LL elements: %d\n", currentHeadNode->value);
-		currentHeadNode = currentHeadNode->next;
-	}
-	// print tail
-	node* currentTailNode = list->tail;
-	while (currentTailNode->next != NULL)
-	{
-		printf("LL elements: %d\n", currentTailNode->value);
-		currentTailNode = currentTailNode->next;
-	}
 
-}
-int countLL(LL* list) {
-	int result = 0;
-	node* currentNode = list->head;
-	while (currentNode->next != NULL)
-	{
-		result++;
-		currentNode = currentNode->next;
-	}
-	return result;
-}
-void addRearLL(LL* list, int number) {
-	node* newNode;
-	newNode = malloc(sizeof(node));
-
+void addFrontLL(LL* list, int number) {
+	Node* newNode;
+	newNode = malloc(sizeof(Node));
 	newNode->value = number;
-	newNode->next = list->tail;
-	list->tail = newNode;
-}
-void deleteLL(LL* list, int number) {
-	//check head 
-	node* currentHeadNode = list->head;
-	while (currentHeadNode->value == number)
-	{
-		list->head->value= NULL; //delete
-		//return;
-	}
-	//check tail
-	node* currentTailNode = list->tail;
-	while (currentTailNode->value == number)
-	{
-		list->tail->value = NULL; //delete
-		return;
-	}
-}
-void copyLL() {
 
+	if (list->size == 0) {
+		list->head = newNode;
+		list->tail = newNode;
+		list->head->next = list->tail;
+		list->size++;
+	}
+	else {
+		newNode->next = list->head;
+		list->head = newNode;
+		list->size++;
+	}
+}
+
+void addRearLL(LL* list, int number) {
+	Node* newNode;
+	newNode = malloc(sizeof(Node));
+	newNode->value = number;
+
+	if (list->size == 0) {
+		list->head = newNode;
+		list->tail = newNode;
+		list->head->next = list->tail;
+		list->size++;
+	}
+	else {
+		list->tail->next = newNode;
+		list->tail = newNode;
+		list->size++;
+	}
+
+}
+
+
+long countLL(LL* list) {
+	return list->size;
+}
+
+void printLL(LL* list) {
+	Node* no = list->head;
+	int i = 0;
+	while (i < list->size) {
+		printf("element: %d\n", no->value);
+		no = no->next;
+		i++;
+	}
+}
+
+void deleteLL(LL* list, Node* node) {
+	Node* toBeDeleted = list->head;
+	Node* previous = toBeDeleted;
+	while (toBeDeleted != node) {
+		previous = toBeDeleted;
+		toBeDeleted = toBeDeleted->next;
+	}
+
+	if (toBeDeleted == list->head) {
+		list->head = list->head->next;
+	}
+	else if (toBeDeleted == list->tail) {
+		list->tail = previous;
+	}
+
+	previous->next = toBeDeleted->next;
+	free(toBeDeleted);
+	list->size--;
+}
+
+void destructLL(LL* list) {
+	int i = 0;
+	while (i < list->size) {
+		Node* node = list->head;
+		deleteLL(list, node);
+	}
+}
+
+void copyLL(LL* origin, LL* copy) {
+	int i = 1;
+	Node* node = origin->head;
+	constructLL(copy);
+	addFrontLL(copy, node->value);
+	node = node->next;
+	while (i < origin->size) {
+		addRearLL(copy, node->value);
+		node = node->next;
+		i++;
+	}
 }

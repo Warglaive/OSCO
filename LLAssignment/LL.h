@@ -1,25 +1,31 @@
-/*part of header file LL.h*/
 #ifndef LL_H
 #define LL_H
 
-struct Snode {
-	int value; //node data
-	struct Snode* next; //next node
-};
+typedef struct Snode {
+	int value;
+	struct Snode* next;
+} Node;
 
-typedef struct Snode node;
+typedef struct list {
+	Node* head;
+	Node* tail;
+	long size;
+} LL;
 
-struct list {
-	node* head;
-	node* tail;
-};
+void constructLL(LL* list);
 
-typedef struct list LL;
+void addFrontLL(LL* list, int number);
 
-// .....
-//void addFrontLL(LL* list,int number);
-// .....
+void addRearLL(LL* list, int number);
+
+void printLL(LL* list);
+
+long countLL(LL* list);
+
+void deleteLL(LL* list, Node* n);
+
+void destructLL(LL* list);
+
+void copyLL(LL* original, LL* copy);
 
 #endif
-/*eof LL.h*/
-//  On the /*???*/ part in later steps you need to add a node pointer there. On the dots ..... other prototypes need to be defined
