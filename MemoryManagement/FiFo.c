@@ -4,26 +4,30 @@ int frames[F];
 int lastFIFOindex = 0;
 
 void toPrint(int page_in) {
-	printf("|P: %d | %d | %d | %d |", page_in, frames[0], frames[1], frames[2]);
+	printf("|P: %d | %d | %d | %d", page_in, frames[0], frames[1], frames[2]);
 }
-int getAddr(int page_in) {
-	for (int i = 0; i < F; i++) {
-		if (frames[i] == page_in) {
+int getAddr(int page_in) { //check if element is present in the frame
+	for (int i = 0; i < F; i++)
+	{
+		if (frames[i] == page_in)
+		{
 			return 1;
 		}
 	}
 	return 0;
 }
 void handlePfault(int page_in) {
-	if (lastFIFOindex == 3) {
+	if (lastFIFOindex == 3) //out of bounds
+	{
 		lastFIFOindex = 0;
 	}
 	frames[lastFIFOindex] = page_in;
 	lastFIFOindex++;
 
 }
-int FIFO(int page_in) {
-	if (getAddr(page_in) == 0) {
+void FIFO(int page_in) {
+	if (getAddr(page_in) == 0)
+	{
 		handlePfault(page_in);
 		toPrint(page_in);
 		printf(" F \n");
@@ -32,7 +36,6 @@ int FIFO(int page_in) {
 		toPrint(page_in);
 		printf("\n");
 	}
-	return 0;
 }
 int main() {
 	printf("FIFO memory management\n");
