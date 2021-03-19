@@ -38,7 +38,22 @@ void FIFO(int page_in) {
 	}
 }
 int main() {
-	printf("FIFO memory management\n");
+	//printf("FIFO memory management\n");
+	//printf("Frame:| 0 | 1 | 2 | PF?\n");
+	//FIFO(2);
+	//FIFO(3);
+	//FIFO(2);
+	//FIFO(1);
+	//FIFO(5);
+	//FIFO(2);
+	//FIFO(4);
+	//FIFO(5);
+	//FIFO(3);
+	//FIFO(2);
+	//FIFO(5);
+	//FIFO(2);
+
+	printf("LRU memory management\n");
 	printf("Frame:| 0 | 1 | 2 | PF?\n");
 	FIFO(2);
 	FIFO(3);
@@ -52,4 +67,10 @@ int main() {
 	FIFO(2);
 	FIFO(5);
 	FIFO(2);
+}
+void updateAges(int page_in) {
+
+}
+int LRU(page_in) {
+
 }
