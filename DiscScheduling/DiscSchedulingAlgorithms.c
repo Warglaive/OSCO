@@ -5,7 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "fcfc.h"
+#include "declareAll.h"
 
 #define LOW 0
 #define HIGH 199
