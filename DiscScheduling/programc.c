@@ -120,7 +120,7 @@ int CircularScan() {
 int ScanElevator() {
 	int queue[20];
 	int head, max, q_size, temp, sum;
-	int dloc; //location of disk (head) arr
+	int diskLocation; //location of disk (head) arr
 
 
 	printf("%s\t", "Input no of disk locations");
@@ -153,27 +153,27 @@ int ScanElevator() {
 	//locate head in the queue
 	for (int i = 0; i < q_size; i++) {
 		if (head == queue[i]) {
-			dloc = i;
+			diskLocation = i;
 			break;
 		}
 	}
 
 	if (abs(head - LOW) <= abs(head - HIGH)) {
 
-		for (int j = dloc; j >= 0; j--) {
+		for (int j = diskLocation; j >= 0; j--) {
 			printf("%d --> ", queue[j]);
 		}
-		for (int j = dloc + 1; j < q_size; j++) {
+		for (int j = diskLocation + 1; j < q_size; j++) {
 			printf("%d --> ", queue[j]);
 		}
 
 	}
 	else {
 
-		for (int j = dloc + 1; j < q_size; j++) {
+		for (int j = diskLocation + 1; j < q_size; j++) {
 			printf("%d --> ", queue[j]);
 		}
-		for (int j = dloc; j >= 0; j--) {
+		for (int j = diskLocation; j >= 0; j--) {
 			printf("%d --> ", queue[j]);
 		}
 
