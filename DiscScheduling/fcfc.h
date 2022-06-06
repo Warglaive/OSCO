@@ -1,3 +1,5 @@
 #pragma once
 
-int fcfs();
+int FcFs();
+
+int SSTF();

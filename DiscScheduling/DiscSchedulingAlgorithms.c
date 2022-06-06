@@ -10,8 +10,21 @@
 #define LOW 0
 #define HIGH 199
 
+int main() {
+	FcFs();
+	SSTF();
+	SE();
+	CS();
+	return 0;
+}
 
-int FirstComeFirstServed()
+
+/// <summary>
+///	FirstComeFirstServed
+/// </summary>
+/// <returns></returns>
+
+int FcFs()
 {
 	int queue[100], q_size, head, seek = 0, diff;
 	float avg;
@@ -43,14 +56,13 @@ int FirstComeFirstServed()
 
 	return 0;
 }
+/// <summary>
+///	CircularScan
+/// </summary>
+/// <returns></returns>
+/// 
 
-int main() {
-	FirstComeFirstServed();
-	ShortestServiceTimeFirst();
-	ScanElevator();
-	return 0;
-}
-int CircularScan() {
+int CS() {
 	int queue[20];
 	int head, max, q_size, temp, sum;
 	int discLocation; //location of disk (head) arr
@@ -117,7 +129,11 @@ int CircularScan() {
 
 	return 0;
 }
-int ScanElevator() {
+/// <summary>
+///	ScanElevator
+/// </summary>
+/// <returns></returns>
+int SE() {
 	int queue[20];
 	int head, max, q_size, temp, sum;
 	int diskLocation; //location of disk (head) arr
@@ -184,7 +200,11 @@ int ScanElevator() {
 	return 0;
 
 }
-int ShortestServiceTimeFirst()
+/// <summary>
+/// ShortestServiceTimeFirst
+/// </summary>
+/// <returns></returns>
+int SSTF()
 {
 	int queue[100], queue2[100], q_size, head, seek = 0, temp;
 	float avg;
