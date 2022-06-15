@@ -7,14 +7,15 @@ namespace MyApp // Note: actual namespace depends on the project name.
         static void Main(string[] args)
         {
             //Experiment 1
-            //var keys = File.ReadAllText(@"D:\OSCO\FileManagement\TransactionFile.txt").Split(
-            //new string[] { Environment.NewLine },
-            //StringSplitOptions.None);
+            //   ExperimentOne();
+            //Experiment 2
 
-            //var pileFile = File.ReadAllText(@"D:\OSCO\FileManagement\PileFile.txt").Split(
-            //new string[] { Environment.NewLine },
-            //StringSplitOptions.None);
 
+        }
+
+        private static void ExperimentOne()
+        {
+            Console.WriteLine("Experiment 1 START...");
             var path = "D:\\OSCO\\FileManagement\\TransactionFile.txt";
             var pileFile = File.ReadAllText(@"D:\OSCO\FileManagement\PileFile.txt");
             var pileFileLength = pileFile.Length;
@@ -26,6 +27,7 @@ namespace MyApp // Note: actual namespace depends on the project name.
             Console.WriteLine(averageAccessTime / pileFileLength);
             File.ReadLines(@"D:\OSCO\FileManagement\TransactionFile.txt").SkipWhile(line => !line.Contains("CustomerEN"))
                 .TakeWhile(line => !line.Contains('\n'));
+            Console.WriteLine("Experiment 1 END...\n");
         }
     }
 }
