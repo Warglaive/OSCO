@@ -31,7 +31,8 @@ namespace MyApp // Note: actual namespace depends on the project name.
             File.ReadLines(@"D:\OSCO\FileManagement\TransactionFile.txt").SkipWhile(line => !line.Contains("CustomerEN"))
                 .TakeWhile(line => !line.Contains('\n'));
             //ratio
-            decimal ratio = (decimal)sequentialFile.Length / (decimal)allBytes.Length;
+            decimal ratio = sequentialFile.Length
+                            / (decimal)allBytes.Length;
             Console.WriteLine($"Ratio: {ratio}");
             Console.WriteLine("Second Experiment END..." + Environment.NewLine);
         }
