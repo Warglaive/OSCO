@@ -9,6 +9,12 @@ namespace MyApp // Note: actual namespace depends on the project name.
             //Experiment 1
             ExperimentOne();
             //Experiment 2
+            ExperimentTwo();
+
+        }
+
+        private static void ExperimentTwo()
+        {
             Console.WriteLine("Second Experiment START...");
 
             var sequentialFile = @"D:\OSCO\FileManagement\SequentialFile.txt";
@@ -28,7 +34,6 @@ namespace MyApp // Note: actual namespace depends on the project name.
             decimal ratio = (decimal)sequentialFile.Length / (decimal)allBytes.Length;
             Console.WriteLine($"Ratio: {ratio}");
             Console.WriteLine("Second Experiment END..." + Environment.NewLine);
-
         }
 
         private static void ExperimentOne()
