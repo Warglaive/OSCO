@@ -16,11 +16,14 @@ namespace MyApp // Note: actual namespace depends on the project name.
             //StringSplitOptions.None);
 
             var path = "D:\\OSCO\\FileManagement\\TransactionFile.txt";
+            var pileFile = File.ReadAllText(@"D:\OSCO\FileManagement\PileFile.txt");
+            var pileFileLength = pileFile.Length;
+
             var bytesLength = File.ReadAllBytes(path).Length;
             Console.WriteLine($"count the number of byte accesses needed {bytesLength}");
-            var averageAccessTime = File.ReadAllBytes(path);
-            var current = File.GetLastAccessTime(path).Second;
-            Console.WriteLine(current);
+            var allBytes = File.ReadAllBytes(path);
+            decimal averageAccessTime = File.GetLastAccessTime(path).Second;
+            Console.WriteLine(averageAccessTime / pileFileLength);
             File.ReadLines(@"D:\OSCO\FileManagement\TransactionFile.txt").SkipWhile(line => !line.Contains("CustomerEN"))
                 .TakeWhile(line => !line.Contains('\n'));
         }
